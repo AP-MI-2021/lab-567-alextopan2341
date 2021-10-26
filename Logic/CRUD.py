@@ -46,11 +46,12 @@ def modificare_obiect(lista, id, nume, descriere, pret_achizitie, locatie):
     :param locatie: noua locatia obiectului
     :return:
     '''
-    lista_noua = []
-    for obiect in lista :
+    lista_noua = lista
+    lista=[]
+    for obiect in lista_noua:
         if get_id(obiect) == id:
-            obiect_nou =  creeaza_obiect(id, nume, descriere, pret_achizitie, locatie)
-            lista_noua.append(obiect_nou)
+            obiect_nou = creeaza_obiect(id, nume, descriere, pret_achizitie, locatie)
+            lista.append(obiect_nou)
         else:
-            lista_noua.append(obiect)
-    return lista_noua
+            lista.append(obiect)
+    return lista
