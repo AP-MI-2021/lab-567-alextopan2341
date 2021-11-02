@@ -1,6 +1,7 @@
 from Domain.obiect import to_string
 from Logic.CRUD import adauga_obiect, stergere_obiect, modificare_obiect
-from Logic.functionalitati import concatenare, lista_locatii, pret_max_locatie, ordonare_obiecte
+from Logic.functionalitati import concatenare, lista_locatii, pret_max_locatie, ordonare_obiecte, mutare_locatie, \
+    suma_pret_locatie
 
 
 def print_menu():
@@ -56,6 +57,17 @@ def afisare(lista):
     for obiect in lista:
         print(to_string(obiect))
 
+def ui_mutare_locatie(lista):
+    string_old = input("Dati string-ul vechi: ")
+    string_new = input("Dati string-ul nou: ")
+    return mutare_locatie(string_new, string_old, lista)
+
+def ui_suma_pret_locatie(lista):
+    lista_locatie = lista_locatii(lista)
+    lista_suma = suma_pret_locatie(lista)
+    for x in range(0, len(lista_suma)):
+        print(lista_locatie[x], ": ", lista_suma[x])
+
 def run_menu(lista):
     while True:
         print_menu()
@@ -67,13 +79,17 @@ def run_menu(lista):
         elif optiune == "3":
             lista = ui_modificare_obiect(lista)
         elif optiune == "4":
-            print("Optiunea inca nu este functionala")
+           lista = ui_mutare_locatie(lista)
         elif optiune == "5":
             lista = ui_concatenare(lista)
         elif optiune == "6":
             ui_pret_maxim_locatie(lista)
         elif optiune == "7":
             ui_ordonare_obiecte(lista)
+        elif optiune == "8":
+            ui_suma_pret_locatie(lista)
+        elif optiune == "9":
+            print("Optiunea de Undo inca nu este realizata")
         elif optiune == "a":
             afisare(lista)
         elif optiune == "x":

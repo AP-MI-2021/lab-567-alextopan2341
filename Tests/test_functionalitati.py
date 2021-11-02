@@ -1,6 +1,7 @@
-from Domain.obiect import creeaza_obiect, get_descriere, get_nume, get_pret
+from Domain.obiect import creeaza_obiect, get_descriere, get_nume, get_pret, get_locatie
 from Logic.CRUD import adauga_obiect, get_by_id
-from Logic.functionalitati import concatenare, lista_locatii, pret_max_locatie, ordonare_obiecte
+from Logic.functionalitati import concatenare, lista_locatii, pret_max_locatie, ordonare_obiecte, mutare_locatie, \
+    suma_pret_locatie
 
 
 def test_concatenare():
@@ -134,3 +135,74 @@ def test_ordonare_obiecte():
     assert get_pret(lista[1]) == 146
     assert get_pret(lista[2]) == 176
     assert get_pret(lista[3]) == 1246
+
+def test_mutare_locatie():
+    lista = []
+    id = "4"
+    nume = "surubelnita"
+    descriere = "metalica"
+    pret_achizitie = 76
+    locatie = "Roma"
+    obiect = creeaza_obiect(id, nume, descriere, pret_achizitie, locatie)
+    adauga_obiect(lista, id, nume, descriere, pret_achizitie, locatie)
+    id = "5"
+    nume = "macara"
+    descriere = "fier"
+    pret_achizitie = 1246
+    locatie = "Arad"
+    obiect = creeaza_obiect(id, nume, descriere, pret_achizitie, locatie)
+    adauga_obiect(lista, id, nume, descriere, pret_achizitie, locatie)
+    id = "6"
+    nume = "surubelnita1"
+    descriere = "metalica1"
+    pret_achizitie = 176
+    locatie = "Roma"
+    obiect = creeaza_obiect(id, nume, descriere, pret_achizitie, locatie)
+    adauga_obiect(lista, id, nume, descriere, pret_achizitie, locatie)
+    id = "7"
+    nume = "macara1"
+    descriere = "fier1"
+    pret_achizitie = 146
+    locatie = "Arad"
+    obiect = creeaza_obiect(id, nume, descriere, pret_achizitie, locatie)
+    adauga_obiect(lista, id, nume, descriere, pret_achizitie, locatie)
+    string_old = "Arad"
+    string_new = "VLC"
+    lista1 = mutare_locatie(string_new, string_old, lista)
+    assert get_locatie(lista1[1]) == "VLC"
+    assert get_locatie(lista1[3]) == "VLC"
+
+def test_suma_pret_locatie():
+    lista1 = []
+    lista = []
+    id = "4"
+    nume = "surubelnita"
+    descriere = "metalica"
+    pret_achizitie = 10
+    locatie = "Roma"
+    obiect = creeaza_obiect(id, nume, descriere, pret_achizitie, locatie)
+    adauga_obiect(lista, id, nume, descriere, pret_achizitie, locatie)
+    id = "5"
+    nume = "macara"
+    descriere = "fier"
+    pret_achizitie = 20
+    locatie = "Arad"
+    obiect = creeaza_obiect(id, nume, descriere, pret_achizitie, locatie)
+    adauga_obiect(lista, id, nume, descriere, pret_achizitie, locatie)
+    id = "6"
+    nume = "surubelnita1"
+    descriere = "metalica1"
+    pret_achizitie = 30
+    locatie = "Roma"
+    obiect = creeaza_obiect(id, nume, descriere, pret_achizitie, locatie)
+    adauga_obiect(lista, id, nume, descriere, pret_achizitie, locatie)
+    id = "7"
+    nume = "macara1"
+    descriere = "fier1"
+    pret_achizitie = 30
+    locatie = "Arad"
+    obiect = creeaza_obiect(id, nume, descriere, pret_achizitie, locatie)
+    adauga_obiect(lista, id, nume, descriere, pret_achizitie, locatie)
+    lista1 = suma_pret_locatie(lista)
+    assert lista1[0] == 40
+    assert lista1[1] == 50

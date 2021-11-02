@@ -50,7 +50,7 @@ def modificare_obiect(lista, id, nume, descriere, pret_achizitie, locatie):
     lista=[]
     for obiect in lista_noua:
         if get_id(obiect) == id:
-            obiect_nou = creeaza_obiect(id, nume, descriere, pret_achizitie, locatie)
+            obiect_nou = creeaza_obiect(id, nume, descriere, float(pret_achizitie), locatie)
             lista.append(obiect_nou)
         else:
             lista.append(obiect)
