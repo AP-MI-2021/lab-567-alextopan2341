@@ -19,7 +19,6 @@ def print_menu():
     print("a. Afisare toate obiectele")
     print("x. Iesire")
 
-
 def ui_adaugare_obiect(lista):
     id = input("Dati id-ul: ")
     nume = input("Dati numele: ")
@@ -28,11 +27,9 @@ def ui_adaugare_obiect(lista):
     locatie = input("Dati locatia: ")
     return adauga_obiect(lista, id, nume, descriere, pret_achizitie, locatie)
 
-
 def ui_stergere_obiect(lista):
     id = input("Dati id-ul obiectului de sters: ")
     return stergere_obiect(id, lista)
-
 
 def ui_modificare_obiect(lista):
     id = input("Dati id-ul obiectului de modificat: ")
