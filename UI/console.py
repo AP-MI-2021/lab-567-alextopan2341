@@ -2,6 +2,7 @@ from Domain.obiect import to_string
 from Logic.CRUD import adauga_obiect, stergere_obiect, modificare_obiect
 from Logic.functionalitati import concatenare, lista_locatii, pret_max_locatie, ordonare_obiecte, mutare_locatie, \
     suma_pret_locatie
+from UI.command_line_console import command_line_console
 
 
 def print_menu():
@@ -14,6 +15,7 @@ def print_menu():
     print("7. Ordonarea obiectelor crescător după prețul de achiziție.")
     print("8. Afișarea sumelor prețurilor pentru fiecare locație.")
     print("9. Undo")
+    print("10.Exerc. lab")
     print("a. Afisare toate obiectele")
     print("x. Iesire")
 
@@ -39,6 +41,7 @@ def ui_modificare_obiect(lista):
     pret_achizitie = input("Dati pretul: ")
     locatie = input("Dati locatia: ")
     return modificare_obiect(lista, id, nume, descriere, pret_achizitie, locatie)
+
 def ui_concatenare(lista):
     string_citit = input("Dati string-ul: ")
     pret_citit = float(input("Dati pretul: "))
@@ -68,6 +71,9 @@ def ui_suma_pret_locatie(lista):
     for x in range(0, len(lista_suma)):
         print(lista_locatie[x], ": ", lista_suma[x])
 
+def ui_command_line_console(lista):
+    command_line_console(lista)
+
 def run_menu(lista):
     while True:
         print_menu()
@@ -90,6 +96,8 @@ def run_menu(lista):
             ui_suma_pret_locatie(lista)
         elif optiune == "9":
             print("Optiunea de Undo inca nu este realizata")
+        elif optiune == "10":
+            lista = ui_command_line_console(lista)
         elif optiune == "a":
             afisare(lista)
         elif optiune == "x":
