@@ -18,6 +18,7 @@ def test_adauga_obiect():
     assert get_descriere(get_by_id("4", lista)) == "metalica"
     assert get_pret(get_by_id("4", lista)) == 76
     assert get_locatie(get_by_id("4", lista)) == "Roma"
+
 def test_get_by_id():
     lista = []
     id = "4"
@@ -36,6 +37,7 @@ def test_get_by_id():
     adauga_obiect(lista, id, nume, descriere, pret_achizitie, locatie)
     assert get_id(get_by_id("4", lista)) == "4"
     assert get_id(get_by_id("5", lista)) == "5"
+
 def test_stergere_obiect():
     lista = []
     id = "4"

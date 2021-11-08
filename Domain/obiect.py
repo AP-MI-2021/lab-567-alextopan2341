@@ -59,6 +59,7 @@ def get_locatie(obiect):
     '''
     #return obiect["locatie"]
     return obiect[4]
+
 def to_string(obiect):
     ob = {"id": get_id(obiect), "nume": get_nume(obiect), "descriere": get_descriere(obiect), "pret": get_pret(obiect), "locatie": get_locatie(obiect)}
     li = list(ob.items())
@@ -72,6 +73,27 @@ def to_string(obiect):
         get_locatie(obiect)
     )
     '''
-def valideaza_obiect(obiect):
+def valideaza_locatie(obiect):
     if len(get_locatie(obiect)) > 4:
         raise ValueError("Locatia trebuie sa aiba maxim 4 caractere!")
+    elif len(get_locatie(obiect)) == 0:
+        raise ValueError("Locatia nu poate fi nula!")
+
+def valideaza_nume(obiect):
+    if len(get_nume(obiect)) == 0:
+        raise ValueError("Numele nu poate fi nul!")
+
+def valideaza_id(obiect):
+    if get_id(obiect) is not None:
+        raise ValueError("ID-ul exista deja!")
+
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
+
+def valideaza_pret(obiect):
+    if is_number(get_pret(obiect)) is False:
+        raise ValueError("Pretul nu poate contine string-uri")

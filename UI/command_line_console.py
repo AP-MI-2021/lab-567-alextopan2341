@@ -21,7 +21,7 @@ def command_line_console(lista):
             descriere = numere[3]
             pret_achizitie = float(numere[4])
             locatie = numere[5]
-            lista = adauga_obiect(lista, id, nume, descriere, pret_achizitie, locatie)
+            adauga_obiect(lista, id, nume, descriere, pret_achizitie, locatie)
             if numere[6] == "showall":
                 print(lista)
         elif numere[0] == "change":
@@ -36,9 +36,10 @@ def command_line_console(lista):
         elif numere[0] == "showall":
             print(lista)
         elif numere[0] == "exit":
-            return 0
+            break
         elif numere[0] == "delete":
             id = numere[1]
             lista = stergere_obiect(id, lista)
         else:
             print("Optiune gresita! Reincercati!")
+    return lista

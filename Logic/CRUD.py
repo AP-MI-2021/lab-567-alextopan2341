@@ -1,4 +1,4 @@
-from Domain.obiect import creeaza_obiect, valideaza_obiect, get_id
+from Domain.obiect import creeaza_obiect, valideaza_locatie, get_id, valideaza_nume, valideaza_pret, valideaza_id
 
 
 def adauga_obiect(lista, id, nume, descriere, pret_achizitie, locatie):
@@ -13,9 +13,12 @@ def adauga_obiect(lista, id, nume, descriere, pret_achizitie, locatie):
     :return: lista actualizata
     '''
     obiect = creeaza_obiect(id, nume, descriere, pret_achizitie, locatie)
-    valideaza_obiect(obiect)
+    if get_id(obiect) == '':
+        raise ValueError("Nu ati dat ID!")
+    valideaza_nume(obiect)
+    valideaza_pret(obiect)
+    valideaza_locatie(obiect)
     lista.append(obiect)
-    return lista
 
 def get_by_id(id, lista):
     '''
@@ -28,6 +31,7 @@ def get_by_id(id, lista):
         if get_id(obiect) == id:
             return obiect
     return None
+
 def stergere_obiect(id, lista):
     '''
     sterge un obiect dintr-o lista dupa id
@@ -35,7 +39,10 @@ def stergere_obiect(id, lista):
     :param lista: list de obiecte
     :return: lista de obiecte
     '''
+    if get_by_id(id, lista) is None:
+        raise ValueError("Id-ul de sters nu exista!")
     return [obiect for obiect in lista if get_id(obiect) != id]
+
 def modificare_obiect(lista, id, nume, descriere, pret_achizitie, locatie):
     '''
     Modifica lista de obiecte dupa id
@@ -46,8 +53,10 @@ def modificare_obiect(lista, id, nume, descriere, pret_achizitie, locatie):
     :param locatie: noua locatia obiectului
     :return:
     '''
+    if get_by_id(id, lista) is None:
+        raise ValueError("Id-ul de modificat nu exista!")
     lista_noua = lista
-    lista=[]
+    lista = []
     for obiect in lista_noua:
         if get_id(obiect) == id:
             obiect_nou = creeaza_obiect(id, nume, descriere, float(pret_achizitie), locatie)
