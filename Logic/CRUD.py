@@ -15,6 +15,8 @@ def adauga_obiect(lista, id, nume, descriere, pret_achizitie, locatie):
     obiect = creeaza_obiect(id, nume, descriere, pret_achizitie, locatie)
     if get_id(obiect) == '':
         raise ValueError("Nu ati dat ID!")
+    elif get_by_id(id, lista) is not None:
+        raise ValueError("Id-ul exista!")
     valideaza_nume(obiect)
     valideaza_pret(obiect)
     valideaza_locatie(obiect)
