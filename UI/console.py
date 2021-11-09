@@ -23,8 +23,8 @@ def print_menu():
 def ui_adaugare_obiect(lista, undo_lista, redo_list):
     try:
         id = input("Dati id-ul: ")
-        #if get_by_id(id, lista) is not None:
-            #raise ValueError("Id-ul exista deja!")
+        if get_by_id(id, lista) is not None:
+            raise ValueError("Id-ul exista deja!")
         nume = input("Dati numele: ")
         descriere = input("Dati descrierea: ")
         pret_achizitie = float(input("Dati pretul: "))
