@@ -13,12 +13,14 @@ def concatenare(lista, pret_citit, string_citit):
             lista_noua.append(obiect)
     return lista_noua
 
+
 def lista_locatii(lista):
     lista_noua = []
     for obiect in lista:
         if get_locatie(obiect) not in lista_noua:
             lista_noua.append(get_locatie(obiect))
     return lista_noua
+
 
 def pret_max_locatie(lista):
     lista_noua = lista_locatii(lista)
@@ -31,12 +33,14 @@ def pret_max_locatie(lista):
         lista_preturi.append(maxim)
     return lista_preturi
 
+
 def ordonare_obiecte(lista):
     for i in range(0, len(lista)-1):
         for j in range(i+1, len(lista)):
             if float(get_pret(lista[i])) > float(get_pret(lista[j])):
                 lista[i], lista[j] = lista[j], lista[i]
     return lista
+
 
 def mutare_locatie(str_new, string_old, lista):
     lista_noua = []
@@ -47,6 +51,7 @@ def mutare_locatie(str_new, string_old, lista):
         else:
             lista_noua.append(obiect)
     return lista_noua
+
 
 def suma_pret_locatie(lista):
     lista_noua = lista_locatii(lista)

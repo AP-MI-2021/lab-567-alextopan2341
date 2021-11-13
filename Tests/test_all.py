@@ -18,4 +18,3 @@ def run_all_tests():
     test_mutare_locatie()
     test_suma_pret_locatie()
     test_undo_redo()
-
