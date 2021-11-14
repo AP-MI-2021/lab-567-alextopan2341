@@ -38,6 +38,8 @@ def test_undo_redo():
     lista = undo_list(lista, undo_lista, redo_lista)
     assert len(lista) == 0
 
+    assert undo_list(lista, undo_lista, redo_lista) == "Nu se poate face undo!"
+
     id = "1"
     nume = "surubelnita"
     descriere = "metalica"
@@ -91,3 +93,7 @@ def test_undo_redo():
     lista = undo_list(lista, undo_lista, redo_lista)
 
     assert len(lista) == 0
+    lista = redo_list(lista, undo_lista, redo_lista)
+    lista = redo_list(lista, undo_lista, redo_lista)
+    assert len(lista) == 2
+    assert (redo_list(lista, undo_lista, redo_lista)) == "Nu se poate face redo!"

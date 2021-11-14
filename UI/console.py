@@ -107,21 +107,25 @@ def ui_suma_pret_locatie(lista):
 
 
 def undo_list(lista, undo_lista, redo_lista):
+    msg = []
     if len(undo_lista) > 0:
         redo_lista.append(lista)
         lista = undo_lista.pop()
         return lista
     else:
-        print("Nu se poate face undo!")
+        msg = "Nu se poate face undo!"
+        return msg
 
 
 def redo_list(lista, undo_lista, redo_lista):
+    msg = []
     if len(redo_lista) > 0:
         undo_lista.append(lista)
         lista = redo_lista.pop()
         return lista
     else:
-        print("Nu se poate face redo!")
+        msg = "Nu se poate face redo!"
+        return msg
 
 
 def prepare_undo(undo_lista,redo_lista,copie_lista):
