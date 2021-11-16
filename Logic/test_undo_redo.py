@@ -1,4 +1,4 @@
-from Domain.obiect import creeaza_obiect
+
 from Logic.CRUD import adauga_obiect
 from UI.console import undo_list, prepare_undo, redo_list
 

@@ -32,7 +32,7 @@ def ui_adaugare_obiect(lista, undo_lista, redo_list):
         locatie = input("Dati locatia: ")
         copie_lista = lista.copy()
         adauga_obiect(lista, id, nume, descriere, pret_achizitie, locatie)
-        prepare_undo(undo_lista,redo_list,copie_lista)
+        prepare_undo(undo_lista, redo_list, copie_lista)
     except ValueError as ve:
         print("Eroare: {}".format(ve))
 
@@ -128,7 +128,7 @@ def redo_list(lista, undo_lista, redo_lista):
         return msg
 
 
-def prepare_undo(undo_lista,redo_lista,copie_lista):
+def prepare_undo(undo_lista, redo_lista, copie_lista):
     undo_lista.append(copie_lista)
     redo_lista.clear()
 
